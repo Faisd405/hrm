@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('lastname')->nullable();
             $table->string('email')->unique();
             $table->string('phone')->nullable();
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->boolean('gender')->default(0)->comment('0 => Woman, 1 => Man');
 
             $table->timestamps();

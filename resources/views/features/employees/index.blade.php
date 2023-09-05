@@ -7,7 +7,7 @@
                         <div></div>
                         <button
                             class="px-4 py-2 font-bold leading-5 text-white transition-colors duration-150 bg-blue-500 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue">
-                            <a href="{{ route('users.create') }}">Create User</a>
+                            <a href="{{ route('employees.create') }}">Create Employee</a>
                         </button>
                     </div>
 
@@ -25,29 +25,36 @@
                                         Email
                                     </th>
                                     <th scope="col" class="px-6 py-3">
+                                        Phone
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
                                         Action
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($employees as $employee)
                                     <tr class="bg-white border-b  ">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                                             {{ $loop->iteration }}
                                         </th>
                                         <td class="px-6 py-4">
-                                            {{ $user->name }} {{ $user->lastname ?? '' }}
+                                            {{ $employee->name }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $user->email }}
+                                            {{ $employee->email }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $employee->phone }}
                                         </td>
                                         <td class="px-6 py-4">
                                             <button
                                                 class="px-2 py-1 text-xs font-medium leading-5 text-white transition-colors duration-150 bg-blue-500 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue">
-                                                <a href="{{ route('users.edit', $user->id) }}">Edit</a>
+                                                <a href="{{ route('employees.edit', $employee->id) }}">Edit</a>
                                             </button>
                                             <button data-modal-target="deleteModal" data-modal-toggle="deleteModal"
-                                                @click="openModal({{ $user->id }})"
+                                                @click="openModal({{ $employee->id }})"
                                                 class="px-2 py-1 text-xs font-medium leading-5 text-white transition-colors duration-150 bg-red-500 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-600 focus:outline-none focus:shadow-outline-red"
                                                 type="button">
                                                 Delete
@@ -59,14 +66,14 @@
                         </table>
 
                         <div class="my-4">
-                            {{ $users->links() }}
+                            {{ $employees->links() }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        @if (isset($user))
+        @if (isset($employee))
             <div id="deleteModal" tabindex="-1" aria-hidden="true"
                 class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div class="relative w-full max-w-2xl max-h-full">
@@ -80,8 +87,8 @@
                             <button type="button"
                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                                 data-modal-hide="deleteModal">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 14 14">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 14 14">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                 </svg>
@@ -90,7 +97,8 @@
                         </div>
                         <!-- Modal body -->
                         <div class="p-6 space-y-6">
-                            Delete your account? All of your data will be permanently removed. This action cannot be undone.
+                            Delete your account? All of your data will be permanently removed. This action cannot be
+                            undone.
                         </div>
                         <!-- Modal footer -->
                         <div
@@ -125,7 +133,7 @@
                 deleteData() {
                     console.log(this.selectedId)
                     // delete with api
-                    axios.delete(`/users/${this.selectedId}`)
+                    axios.delete(`/employees/${this.selectedId}`)
                         .then(() => {
                             this.closeModal()
                             window.location.reload()

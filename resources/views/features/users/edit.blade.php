@@ -17,19 +17,19 @@
                                     @method('PUT')
                                     <div class="grid grid-cols-2 gap-4">
                                         <div>
-                                            <Label for="name">Name</Label>
+                                            <x-label for="name">Name</x-label>
                                             <x-input id="name" type="text" name="name" value="{{ $user['name'] }}"
                                                 class="mt-1 block w-full" required autoFocus placeholder="Name" />
                                             <x-input-error for="name" class="mt-2" />
                                         </div>
                                         <div>
-                                            <Label for="lastname">Last Name</Label>
+                                            <x-label for="lastname">Last Name</x-label>
                                             <x-input id="lastname" type="text" name="lastname" value="{{ $user['lastname'] }}"
                                                 class="mt-1 block w-full" autoFocus placeholder="Last Name" />
                                             <x-input-error for="lastname" class="mt-2" />
                                         </div>
                                         <div>
-                                            <Label for="email">Email</Label>
+                                            <x-label for="email">Email</x-label>
                                             <x-input id="email" type="email" name="email" value="{{ $user['email'] }}"
                                                 class="mt-1 block w-full" required autoFocus placeholder="Email" />
                                             <x-input-error for="email" class="mt-2" />
@@ -37,15 +37,15 @@
                                     </div>
                                     <div class="grid grid-cols-2 gap-4">
                                         <div>
-                                            <Label for="password">Password</Label>
+                                            <x-label for="password">Password</x-label>
                                             <x-input id="password" type="password" name="password"
                                                 class="mt-1 block w-full" autoFocus placeholder="Password" />
                                             <x-input-error for="password" class="mt-2" />
                                         </div>
                                         <div>
-                                            <Label for="password_confirmation">
+                                            <x-label for="password_confirmation">
                                                 Password Confirmation
-                                            </Label>
+                                            </x-label>
                                             <x-input id="password_confirmation" type="password"
                                                 name="password_confirmation" class="mt-1 block w-full" autoFocus
                                                 placeholder="Password Confirmation" />
