@@ -134,7 +134,7 @@
                 deleteData() {
                     console.log(this.selectedId)
                     // delete with api
-                    axios.delete(`/annual_leave/${this.selectedId}`)
+                    axios.delete(`annual_leave/${this.selectedId}`)
                         .then(() => {
                             this.closeModal()
                             window.location.reload()

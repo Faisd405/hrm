@@ -67,7 +67,7 @@ class AnnualLeaveController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(AnnualLeave $annualLeaves, Employee $employee)
+    public function edit(Employee $employee, AnnualLeave $annualLeaves)
     {
         return view('features.annual_leave.edit', [
             'annualLeaves' => $annualLeaves,
@@ -77,7 +77,7 @@ class AnnualLeaveController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AnnualLeave $annualLeaves, Employee $employee)
+    public function update(Request $request, Employee $employee, AnnualLeave $annualLeaves)
     {
         $data = $request->all();
 
@@ -89,9 +89,9 @@ class AnnualLeaveController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(AnnualLeave $annualLeaves)
+    public function destroy(Employee $employee, AnnualLeave $annualLeave)
     {
-        $annualLeaves->delete();
+        $annualLeave->delete();
 
         return response()->json([
             'success' => true,
