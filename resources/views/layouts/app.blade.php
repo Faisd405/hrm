@@ -16,6 +16,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <script src="/assets/js/flowbite.min.js"></script>
+    <script src="/assets/js/datepicker.min.js"></script>
 
     <!-- Styles -->
     @livewireStyles

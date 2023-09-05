@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnualLeaveController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::resource('employees', EmployeeController::class);
+    Route::resource('employees', EmployeeController::class)->except(['show']);
     Route::resource('users', UserController::class)->except(['show']);
+    Route::resource('employees/{employee}/annual_leave', AnnualLeaveController::class)->except(['show']);
 });
